@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  .tooltip-activator {
+    position: relative;
+    display: flex;
+    background-color: salmon;
+    color: white;
+    padding: 10px;
+  }
+
+  .tooltip {
+    position: absolute;
+    display: none;
+    background-color: black;
+    color: white;
+    padding: 20px;
+  }
+</style>
+
+<body>
+  <button class="tooltip-activator" id="tip-1">Haz clic aquí</button>
+  <div class="tooltip" id="info-tip-1">Este es el contenido del tool tisp</div>
+
+  <br>
+
+  <button class="tooltip-activator" id="tip-2">Haz clic aquí</button>
+  <div class="tooltip" id="info-tip-2">Este es el contenido del tool tisp</div>
+
+
+</body>
+<script>
+  const activator = document.getElementById('tip-1');
+  const tooltip = document.getElementById('info-tip-1');
+
+  activator.addEventListener('click', () => {
+
+    if (tooltip.style.display === 'block') {
+      tooltip.style.display = 'none';
+    } else {
+      tooltip.style.display = 'block';
+    }
+
+  });
+
+  const activator2 = document.getElementById('tip-2');
+  const tooltip2 = document.getElementById('info-tip-2');
+
+  activator2.addEventListener('click', () => {
+
+    if (tooltip2.style.display === 'block') {
+      tooltip2.style.display = 'none';
+    } else {
+      tooltip2.style.display = 'block';
+    }
+
+  });
+
+</script>
+
+</html>
