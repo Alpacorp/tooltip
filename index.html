@@ -5,64 +5,90 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Tooltip</title>
 </head>
 <style>
   .tooltip-activator {
     position: relative;
     display: flex;
-    background-color: salmon;
-    color: white;
-    padding: 10px;
+    background-color: transparent;
+    border: none;
+    width: 1px;
+    cursor: pointer;
+    margin-left: 5px;
+  }
+
+  .tooltip-activator img {
+    width: 20px;
+    height: 20px;
   }
 
   .tooltip {
     position: absolute;
     display: none;
-    background-color: black;
-    color: white;
-    padding: 20px;
+    background-color: #005DA2;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+    transition: opacity 0.3s;
+    line-height: 18px;
+    font-style: normal;
+    font-size: 14px;
+    font-weight: 300;
+    margin-top: 20px;
+    max-width: 300px;
+    width: 100%;
+  }
+
+  .tooltip p {
+    color: #fff;
+  }
+
+  .tooltip-triangle {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 10px 10px 10px;
+    border-color: transparent transparent #005DA2 transparent;
+    top: -10px;
+    left: 10px;
   }
 </style>
 
 <body>
-  <button class="tooltip-activator" id="tip-1">Haz clic aquí</button>
-  <div class="tooltip" id="info-tip-1">Este es el contenido del tool tisp</div>
-
-  <br>
-
-  <button class="tooltip-activator" id="tip-2">Haz clic aquí</button>
-  <div class="tooltip" id="info-tip-2">Este es el contenido del tool tisp</div>
-
-
+  <div>
+    <button class="tooltip-activator" id="tip-1">
+      <img class="tooltip-activator-img"
+        src="https://masiv3.s3.amazonaws.com/ImageFiles/K7H4KE/MARKETING%20DIGITAL%20%2FCUENTAMIGA%2FOPTIMIZE%2Finformation.png"
+        alt="Más información" title="Haz click para abrir">
+    </button>
+    <div class="tooltip" id="info-tip-1">
+      <div class="tooltip-triangle"></div>
+      <div>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam sapiente dolore, quod rem, illum aut
+          nesciunt
+          corrupti saepe fugit labore praesentium voluptates! Excepturi sequi neque inventore odio, omnis obcaecati
+          libero.</p>
+      </div>
+    </div>
+  </div>
 </body>
 <script>
   const activator = document.getElementById('tip-1');
   const tooltip = document.getElementById('info-tip-1');
+  const tooltipImg = document.querySelector('.tooltip-activator-img');
 
   activator.addEventListener('click', () => {
-
     if (tooltip.style.display === 'block') {
       tooltip.style.display = 'none';
+      tooltipImg.title = 'Haz click para abrir';
     } else {
       tooltip.style.display = 'block';
+      tooltipImg.title = 'Haz click para cerrar';
     }
-
   });
-
-  const activator2 = document.getElementById('tip-2');
-  const tooltip2 = document.getElementById('info-tip-2');
-
-  activator2.addEventListener('click', () => {
-
-    if (tooltip2.style.display === 'block') {
-      tooltip2.style.display = 'none';
-    } else {
-      tooltip2.style.display = 'block';
-    }
-
-  });
-
 </script>
 
 </html>
