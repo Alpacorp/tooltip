@@ -8,6 +8,18 @@
   <title>Tooltip</title>
 </head>
 <style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+</style>
+<style>
+  .tooltip {
+    max-width: 300px;
+  }
+
   .tooltip-activator {
     position: relative;
     display: flex;
@@ -16,6 +28,7 @@
     width: 1px;
     cursor: pointer;
     margin-left: 7px;
+    transition: all 0.3s;
   }
 
   .tooltip-activator img {
@@ -23,7 +36,12 @@
     height: 20px;
   }
 
-  .tooltip {
+  .tooltip-activator:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+
+  .tooltip-container {
     position: absolute;
     display: none;
     background-color: #005DA2;
@@ -41,8 +59,31 @@
     width: 100%;
   }
 
-  .tooltip p {
+  .tooltip-container .close {
     color: #fff;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 400;
+    cursor: pointer;
+    margin: 10px 30px 10px 10px;
+    border-radius: 5px;
+    border: 1px solid #fff;
+    transition: all 0.3s;
+  }
+
+  .tooltip-container .close:hover {
+    background-color: #fff;
+    color: #005DA2;
+  }
+
+  .tooltip-container p {
+    color: #fff;
+    padding-top: 10px;
   }
 
   .tooltip-triangle {
@@ -58,7 +99,7 @@
 </style>
 
 <body>
-  <div>
+  <div class="tooltip">
     <button class="tooltip-activator" id="tip-1">
       <div class="w-[16px] min-w-[16px] tooltip-activator-img"><svg width="16" height="16" viewBox="0 0 16 16"
           fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -71,8 +112,13 @@
             fill="white"></path>
         </svg></div>
     </button>
-    <div class="tooltip" id="info-tip-1">
+    <div class="tooltip-container" id="info-tip-1">
       <div class="tooltip-triangle"></div>
+      <div>
+        <button class="close" title="Cerrar">
+          X
+        </button>
+      </div>
       <div>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam sapiente dolore, quod rem, illum aut
           nesciunt
@@ -86,6 +132,7 @@
   const activator = document.getElementById('tip-1');
   const tooltip = document.getElementById('info-tip-1');
   const tooltipImg = document.querySelector('.tooltip-activator-img');
+  const close = document.querySelector('.close');
 
   activator.addEventListener('click', () => {
     if (tooltip.style.display === 'block') {
@@ -95,6 +142,11 @@
       tooltip.style.display = 'block';
       tooltipImg.title = 'Haz click para cerrar';
     }
+  });
+
+  close.addEventListener('click', () => {
+    tooltip.style.display = 'none';
+    tooltipImg.title = 'Haz click para abrir';
   });
 </script>
 
