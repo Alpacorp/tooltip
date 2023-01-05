@@ -177,6 +177,25 @@
     tooltip.style.display = 'none';
     tooltipImg.title = 'Haz click para abrir';
   });
+
+  window.addEventListener("beforeunload", function (e) {
+    e.preventDefault();
+    var confirmationMessage = "\o/holaaaaa";
+
+    (e || window.event).returnValue = confirmationMessage; // Gecko + IE
+    console.log("beforeunload", confirmationMessage);
+    return confirmationMessage; // Webkit, Safari, Chrome
+  });
+
+  document.addEventListener("visibilitychange", function (e) {
+    if (document.visibilityState === "hidden") {
+      console.log("hidden");
+      alert("hidden");
+    } else {
+      console.log("visible");
+    }
+    console.log("visibilitychange", e);
+  });
 </script>
 
 </html>
