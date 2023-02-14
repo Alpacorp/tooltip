@@ -14,8 +14,7 @@
     align-items: center;
     height: 100vh;
   }
-</style>
-<style>
+
   .tooltip {
     max-width: 300px;
     width: 100%;
@@ -104,22 +103,14 @@
     width: 300px;
   }
 
-  /* right buttom position */
-
-  /* add into .activator class */
-
   .right-button {
     justify-content: flex-end;
   }
-
-  /* add into .tooltip-triangle class */
 
   .right-triangle {
     left: auto;
     right: 19px;
   }
-
-  /* add into .close class */
 
   .left-close {
     left: 6px;
@@ -178,21 +169,23 @@
     tooltipImg.title = 'Haz click para abrir';
   });
 
+  // leave events
+
   window.addEventListener("beforeunload", function (e) {
     e.preventDefault();
-    var confirmationMessage = "\o/holaaaaa";
+    var confirmationMessage = "Evento de cierre de pestaña o recarga de página";
 
-    (e || window.event).returnValue = confirmationMessage; // Gecko + IE
+    (e || window.event).returnValue = confirmationMessage;
     console.log("beforeunload", confirmationMessage);
-    return confirmationMessage; // Webkit, Safari, Chrome
+    return confirmationMessage;
   });
 
   document.addEventListener("visibilitychange", function (e) {
     if (document.visibilityState === "hidden") {
-      console.log("hidden");
-      alert("hidden");
+      console.log("Está viendo otra pestaña");
+      alert("Está viendo otra pestaña");
     } else {
-      console.log("visible");
+      console.log("Esta viendo la pestaña actual");
     }
     console.log("visibilitychange", e);
   });
